@@ -5,21 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Buku;
+use App\Models\User;
 
 
-class OrderController extends Controller
+class PesananController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //buat index order relasi dengan table buku
+        //panggil data order yang sudah di join dengan table buku dan user
+        
         $order = Order::join('buku', 'order.book_idbook', '=', 'buku.id')
             ->select('order.*', 'buku.judul')
             ->get();
-        return view('order', compact('order'));
-
+        //panggil view pesanan
+        return view('admin.pesanan.index', compact('order'));
     }
 
     /**
@@ -27,8 +29,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //arahkan ke view form 
-        return view('order');
+     //arahkan ke view tambah pesanan
+        return view('admin.pesanan.create_pesanan');
     }
 
     /**

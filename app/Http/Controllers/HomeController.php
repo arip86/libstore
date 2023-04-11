@@ -24,6 +24,11 @@ class HomeController extends Controller
     public function index()
     {
         //jika dia role admin arahkan ke halaman dashboard admin
-        return view('admin/dashboard');
+        //jika dia role pelangga arahkan ke halaman home
+        if(auth()->user()->role == 'admin'){
+            return redirect('/admin/dashboard');
+        }else{
+            return redirect('/');
+        }
     }
 }

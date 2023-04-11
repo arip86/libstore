@@ -3,10 +3,8 @@
 
 @foreach($buku as $buku)
 
-<form method="POST" action="#" enctype="multipart/form-data">
+<form method="POST" action="{{('/admin/buku/update')}}" enctype="multipart/form-data">
 {{ csrf_field() }}
-
-   
   <div class="mb-3">
   <input type="hidden" name="id" value="{{$buku->id}}">
     <label for="exampleInputEmail1" class="form-label">Judul</label>

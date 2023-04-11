@@ -18,9 +18,11 @@
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="penerbit">
     
   </div>
+ 
+
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Tahun-terbit</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="tahun_terbit">
+    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="tahun_terbit">
     
   </div>
   <div class="mb-3">

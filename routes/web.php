@@ -6,6 +6,11 @@ use App\Http\Controllers\KategoriBukuController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboarController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\PesananController;
+use App\Http\Controllers\ProdukController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,41 +23,54 @@ use App\Http\Controllers\UserController;
 |
 */
 Route::get('/', [FrontController::class, 'index']);
+Route::get('/about', [AboutController::class, 'index']);
+//route search
+Route::get('/search', [FrontController::class, 'search']);
+//route produk
+Route::get('/produk', [ProdukController::class, 'index']);
+//route about
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //panggil tampilan home admin
 //buat semua route di dalam group admin
-Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+//buat route group admin hanya admin yang bisa mengakses
+
+Route::group(['middleware' => ['auth', 'role:admin']], function () {
     //buat route home admin
     Route::get('/home', [HomeController::class, 'index']);
+    //buat route dashboard admin
+    Route::get('/admin/dashboard', [DashboarController::class, 'index']);
     //buat route kategori buku dengan class
-    Route::get('/kategori_buku', [KategoriBukuController::class, 'index']);
+    Route::get('/admin/kategori_buku', [KategoriBukuController::class, 'index']);
     //buat route tambah kategori buku
-    Route::get('/kategori_buku/tambah', [KategoriBukuController::class, 'create']);
+    Route::get('/admin/kategori_buku/tambah', [KategoriBukuController::class, 'create']);
     //buat route tambah kategori buku
-    Route::post('/kategori_buku/store', [KategoriBukuController::class, 'store']);
+    Route::post('/admin/kategori_buku/store', [KategoriBukuController::class, 'store']);
     //buat route edit kategori buku
-    Route::get('/kategori_buku/edit/{idkategori_buku}', [KategoriBukuController::class, 'edit']);
+    Route::get('/admin/kategori_buku/edit/{idkategori_buku}', [KategoriBukuController::class, 'edit']);
     //buat route update kategori buku
-    Route::post('/kategori_buku/update', [KategoriBukuController::class, 'update']);
+    Route::post('/admin/kategori_buku/update', [KategoriBukuController::class, 'update']);
     //buat route hapus kategori buku
-    Route::get('/kategori_buku/delete/{idkategori_buku}', [KategoriBukuController::class, 'delete']);
+    Route::get('/admin/kategori_buku/delete/{idkategori_buku}', [KategoriBukuController::class, 'delete']);
     //buat route buku
-    Route::get('/buku', [BukuController::class, 'index']);
+    Route::get('/admin/buku', [BukuController::class, 'index']);
     //buat route tambah buku
-    Route::get('/buku/create_buku', [BukuController::class, 'create']);
+    Route::get('/admin/buku/create_buku', [BukuController::class, 'create']);
     //buat route tambah buku
-    Route::post('/buku/store', [BukuController::class, 'store']);
+    Route::post('/admin/buku/store', [BukuController::class, 'store']);
     //buat route edit buku
-    Route::get('/buku/edit_buku/{id}', [BukuController::class, 'edit']);
+    Route::get('/admin/buku/edit_buku/{id}', [BukuController::class, 'edit']);
     //buat route update buku
-    Route::post('/buku/update', [BukuController::class, 'update']);
+    Route::post('/admin/buku/update', [BukuController::class, 'update']);
     //buat route hapus buku
-    Route::get('/buku/delete/{idbuku}', [BukuController::class, 'delete']);
+    Route::get('/admin/buku/delete/{id}', [BukuController::class, 'delete']);
 
     //route untuk user admin
-    Route::get('/user', [UserController::class, 'index']);
+    Route::get('/admin/user', [UserController::class, 'index']);
+    //buat route order
+    Route::get('/admin/order', [PesananController::class, 'index']);
 
 });
 

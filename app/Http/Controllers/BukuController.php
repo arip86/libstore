@@ -27,8 +27,16 @@ class BukuController extends Controller
      */
     public function create()
     {
+        //table buku
+        $buku = DB::table('buku')
+        ->join('kategori_buku', 'buku.kategori_id', '=', 'kategori_buku.idkategori_buku')
+        ->select('buku.*', 'kategori_buku.kategori_buku')
+        ->get();
+        $kategori_buku = KategoriBuku::all();
+
+
         //arahkan ke view tambah buku
-       return view('admin.buku.create_buku');
+       return view('admin.buku.create_buku', compact('buku', 'kategori_buku'));
     }
 
     /**
@@ -88,7 +96,7 @@ class BukuController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         if(!empty($request->cover)){
             $fileName = 'cover-'.$request->id.'.'.$request->cover->extension();
@@ -100,7 +108,7 @@ class BukuController extends Controller
         }
 
         // update data buku
-        DB::table('buku')->where('id',$request->id)->update([
+        DB::table('buku')->where('id', $request->id)->update([
             'judul' => $request->judul,
             'penulis' => $request->penulis,
             'penerbit' => $request->penerbit,
@@ -111,8 +119,10 @@ class BukuController extends Controller
             'kategori_id' => $request->kategori_id,
             //upload cover buku ke folder public/cover
             'cover' => $fileName,
-
         ]);
+        // alihkan halaman ke halaman buku
+        return redirect('/admin/buku');
+
     }
 
 
@@ -121,6 +131,7 @@ class BukuController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // menghapus data buku berdasarkan id yang dipilih
+        DB::table('buku')->where('id', $id)->delete();
     }
 }

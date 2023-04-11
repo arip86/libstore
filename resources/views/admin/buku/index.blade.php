@@ -2,17 +2,13 @@
 @section ('content')
 
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Tables</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Tables</li>
-                        </ol>
-                        <div class="card mb-4">
+                    <div class="card mb-4">
                             <div class="card-body">
-                                DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                                <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                                .
+                            <h1 class="mt-4">List Buku</h1>
+                                <a target="_blank" href="https://datatables.net/"></a>
+                                
                             </div>
+                            
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
@@ -70,16 +66,16 @@
                                             <td>
 
                                             @empty($buku->cover)
-                                          <img src="{{ url('admin/image/nophoto.png') }}" width="20%" alt="Profile" class="">
+                                          <img src="{{ url('admin/image/nophoto.png') }}" width="20%" >
                                         @else
-                                         <img src="{{ url('admin/image')}}/{{$buku->cover}}" width="20%" alt="Profile" class="">
+                                         <img src="{{ url('admin/image')}}/{{$buku->cover}}" width="20%" >
                                          @endempty
                                             </td>
                                             
                                             <td>
-                                                <a href="{{url('admin/buku/edit_buku/'.$buku->id)}}" class="btn btn-primary">Edit</a>
+                                                <a href="{{url('admin/buku/edit_buku/'.$buku->id)}}" class="btn btn-sm btn-primary">Edit</a>
                                                 
-                                                <a href="" class="btn btn-danger">Delete</a>
+                                                <a href="{{url('admin/buku/delete/'.$buku->id)}}" class="btn btn-sm btn-danger">Delete</a>
                                             </td>
                                         <tr>
                                             @php
