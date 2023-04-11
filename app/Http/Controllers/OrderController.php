@@ -36,7 +36,13 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // tambahkan data ke table order
+        Order::create([
+            'book_idbook' => $request->book_idbook,
+            'jumlah' => $request->jumlah,
+            'total' => $request->total,
+            'status' => $request->status,
+        ]);
     }
 
     /**
