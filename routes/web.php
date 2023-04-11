@@ -10,7 +10,7 @@ use App\Http\Controllers\DashboarController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\ProdukController;
-
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +28,12 @@ Route::get('/about', [AboutController::class, 'index']);
 Route::get('/search', [FrontController::class, 'search']);
 //route produk
 Route::get('/produk', [ProdukController::class, 'index']);
-//route about
+//route order
+Route::get('/order', [OrderController::class, 'index']); 
+//route create order
+Route::get('/order/create', [OrderController::class, 'create']);
+//route store order
+Route::post('/order/store', [OrderController::class, 'store']);
 
 Auth::routes();
 

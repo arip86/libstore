@@ -67,8 +67,7 @@
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Proses Pesanan</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="{{url('proses-pesanan')}}">Proses Pesanan</a></li>
-									<li class="nav-item"><a class="nav-link" href="{{url('konfirmasi-pembayaran')}}">Konfirmasi Pembayaran</a></li>
+									<li class="nav-item"><a class="nav-link" href="{{url('/order')}}">Proses Pesanan</a></li>
 								</ul>
 							</li>
 							@endif

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Buku;
 use App\Models\kategoriBuku;
+use Illuminate\Support\Facades\DB;
 
 
 class ProdukController extends Controller

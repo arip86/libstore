@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Buku;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 
 class PesananController extends Controller

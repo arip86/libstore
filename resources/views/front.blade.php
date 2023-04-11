@@ -139,9 +139,9 @@
                                 
 								<div class="prd-bottom">
 
-									<a href="" class="social-info">
+									<a href="{{url('order/create')}}" class="social-info">
 										<span class="ti-bag"></span>
-										<p class="hover-text">add to bag</p>
+										<p class="hover-text">Order</p>
 									</a>
 									
 								</div>
