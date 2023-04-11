@@ -1,5 +1,10 @@
 -- silahkan ketikan perintah berikut ke terminal 
 1. git clone
+2. setelah cloning selesai 
+composer install
+npm install 
+setting .env
+
 
 
 <<<<<<< HEAD
